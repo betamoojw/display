@@ -153,9 +153,9 @@ psram:
   mode: octal
   speed: 80MHz
 
-external_components:
-  - source: github://pr#7338
-    components: [lvgl]
+# external_components:
+#   - source: github://pr#7338
+#     components: [lvgl]
 
 # Enable logging
 logger:
