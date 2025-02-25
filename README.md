@@ -54,4 +54,4 @@ Place all files from src folder into esphome folder of your home assistant. Edit
 
 
 
-Thanks, Clyde and everyone from the ESPHome Discord, for helping me with the project!
+Thanks, [сlydebarrow](https://github.com/clydebarrow) and everyone from the ESPHome Discord, for helping me with the project!
