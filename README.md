@@ -39,6 +39,10 @@
   * Language selection for states
 
 ## 📦 Installation
+> [!WARNING]
+> Supports ESPHome version 2025.5.2! Version 2025.6.0+ is not supported yet!
+
+> 📹 **Video [instruction](https://youtu.be/MXEmXDwzndE?si=3xp3JhpcEGNLiiHM)**
 
 <img width="400px" src="/doc/img/screen11.png">
 
