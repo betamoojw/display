@@ -41,7 +41,7 @@
 ## 📦 Instalation
 1. You must enable the "Allow the device to perform Home Assistant actions." option in the ESPHome integration to Home Assistant to control devices.
 <img width="400px" src="/doc/img/screen11.png">
-2. Install custom component for translations and covers for media player from [here](https://github.com/alaltitov/homeassistant-display-tools)
+2. Install custom component for translations and covers for media player from https://github.com/alaltitov/homeassistant-display-tools.
 3. Copy repository to vscode or to esphome folder of your Home Assistant. Change in substitutions your entities in all widgets (only in substitution, in code everything will be substituted automatically).
 
 ## 🐛 Known Issues
