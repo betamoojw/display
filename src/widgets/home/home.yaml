@@ -1,0 +1,3 @@
+packages:
+  home: !include home_widget.yaml
+  info: !include info_page.yaml
