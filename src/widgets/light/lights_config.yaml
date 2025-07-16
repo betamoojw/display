@@ -11,10 +11,10 @@ substitutions:
   light_widget_name_4: "light4"
 
 
-  label_name_1: "spotlights 1"
-  label_name_2: "ceiling lamp"
-  label_name_3: "night lamp"
-  label_name_4: "pendant lamp"
+  light_label_name_1: "spotlights 1"
+  light_label_name_2: "ceiling lamp"
+  light_label_name_3: "night lamp"
+  light_label_name_4: "pendant lamp"
 
 packages:
   light_panel: !include lights_panel.yaml

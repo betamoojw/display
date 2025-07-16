@@ -36,7 +36,7 @@ lvgl:
                   align: TOP_MID
                   text_font: nunito_16
                   text_color: color_misty_blue
-                  text: "${label_name_1}"
+                  text: "${shutter_label_name_1}"
 
         - button:
             id: ${shutter_widget_name_2}_btn
@@ -63,7 +63,7 @@ lvgl:
                   align: TOP_MID
                   text_font: nunito_16
                   text_color: color_misty_blue
-                  text: "${label_name_2}"
+                  text: "${shutter_label_name_2}"
 
         - button:
             id: ${shutter_widget_name_3}_btn
@@ -90,7 +90,7 @@ lvgl:
                   align: TOP_MID
                   text_font: nunito_16
                   text_color: color_misty_blue
-                  text: "${label_name_3}"
+                  text: "${shutter_label_name_3}"
 
         - button:
             id: ${shutter_widget_name_4}_btn
@@ -117,7 +117,7 @@ lvgl:
                   align: TOP_MID
                   text_font: nunito_16
                   text_color: color_misty_blue
-                  text: "${label_name_4}"
+                  text: "${shutter_label_name_4}"
 
 
 binary_sensor:

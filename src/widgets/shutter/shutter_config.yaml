@@ -11,10 +11,10 @@ substitutions:
   shutter_widget_name_4: "shutter4"
 
 
-  label_name_1: "shutter 1"
-  label_name_2: "shutter 2"
-  label_name_3: "shutter 3"
-  label_name_4: "shutter 4"
+  shutter_label_name_1: "shutter 1"
+  shutter_label_name_2: "shutter 2"
+  shutter_label_name_3: "shutter 3"
+  shutter_label_name_4: "shutter 4"
 
 
 packages:
