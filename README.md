@@ -1,5 +1,11 @@
 # LVGL ESPhome Guition ESP32-S3-4848S040 custom firmware
 
+> [!NOTE]
+>
+> ❤️ **GOOD NEWS**
+>
+> You can use any ESPHome version, including 2025.6+. See the [instructions](#installation) below for details.
+
 <p align="center">
  <img width="200px" src="/doc/img/screen1.png">
  <img width="200px" src="/doc/img/screen2.png">
@@ -40,7 +46,16 @@
 
 ## 📦 Installation
 > [!WARNING]
-> Supports ESPHome version 2025.5.2! Version 2025.6.0+ is not supported yet!
+> All widgets are fully supported only on ESPHome firmware version **2025.5.2**.  
+>  
+> It is possible to run this project on the latest ESPHome version, but you will need to comment out one of the widgets in devices.yaml (it has been tested to work without the shutter or media player widgets).  
+>  
+> Unfortunately, ESPHome versions **2025.6 and newer** cannot handle this number of widgets on this device.
+
+
+<img width="600px" src="/doc/img/screen13.png">
+<img width="200px" src="/doc/img/screen14.png">
+
 
 > 📹 **Video [instruction](https://youtu.be/HYN_2hvcbes?si=JfYQH4vCuFlr8Q9r)**
 
