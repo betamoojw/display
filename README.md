@@ -4,7 +4,7 @@
 >
 > ❤️ **GOOD NEWS**
 >
-> You can use any ESPHome version, including 2025.6+. See the [instructions](##installation) below for details.
+> You can use any ESPHome version, including 2025.6+. See the [instructions](#-installation) below for details.
 
 <p align="center">
  <img width="200px" src="/doc/img/screen1.png">
