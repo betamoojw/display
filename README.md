@@ -48,7 +48,7 @@
 > [!WARNING]
 > All widgets are fully supported only on ESPHome firmware version **2025.5.2**.  
 >  
-> It is possible to run this project on the latest ESPHome version, but you will need to comment out one of the widgets in devices.yaml (it has been tested to work without the shutter or media player widgets).  
+> It is possible to run this project on the latest ESPHome version, but you will need to comment out one of the widgets and button in devices.yaml (it has been tested to work without the shutter or media player widgets).  
 >  
 > Unfortunately, ESPHome versions **2025.6 and newer** cannot handle this number of widgets on this device.
 
