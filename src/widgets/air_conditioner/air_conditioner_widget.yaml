@@ -34,6 +34,8 @@ climate:
     preset:
       - name: Home
         default_target_temperature_high: 22 °C
+      - name: Away
+        default_target_temperature_high: 24 °C
 
 switch:
   - platform: gpio

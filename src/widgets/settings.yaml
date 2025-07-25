@@ -18,6 +18,8 @@ globals:
     type: std::map<std::string, std::string>
   - id: weather_translations
     type: std::map<std::string, std::string>
+  - id: alarm_panel_translations
+    type: std::map<std::string, std::string>
 
 text_sensor:
   - platform: homeassistant
@@ -61,19 +63,15 @@ text_sensor:
       then:
         - lambda: |-
             if (x.length() > 0) {
-
-              DynamicJsonDocument doc(2048);
+              JsonDocument doc;
               DeserializationError error = deserializeJson(doc, x);
-              
+
               if (!error) {
                 id(vacuum_translations).clear();
-                
-                for (JsonPair kv : doc.as<JsonObject>()) {
-                  std::string key = kv.key().c_str();
-                  std::string value = kv.value().as<std::string>();
-                  id(vacuum_translations)[key] = value;
+                for (auto kv : doc.as<JsonObject>()) {
+                  id(vacuum_translations)[kv.key().c_str()] = kv.value().as<std::string>();
                 }
-              } 
+              }
             }
 
   - platform: homeassistant
@@ -84,17 +82,13 @@ text_sensor:
       then:
         - lambda: |-
             if (x.length() > 0) {
-              
-              DynamicJsonDocument doc(2048);
+              JsonDocument doc;
               DeserializationError error = deserializeJson(doc, x);
-              
+
               if (!error) {
                 id(cover_translations).clear();
-                
-                for (JsonPair kv : doc.as<JsonObject>()) {
-                  std::string key = kv.key().c_str();
-                  std::string value = kv.value().as<std::string>();
-                  id(cover_translations)[key] = value;
+                for (auto kv : doc.as<JsonObject>()) {
+                  id(cover_translations)[kv.key().c_str()] = kv.value().as<std::string>();
                 }
               }
             }
@@ -107,20 +101,17 @@ text_sensor:
       then:
         - lambda: |-
             if (x.length() > 0) {
-              
-              DynamicJsonDocument doc(2048);
+              JsonDocument doc;
               DeserializationError error = deserializeJson(doc, x);
-              
+
               if (!error) {
                 id(climate_translations).clear();
-                
-                for (JsonPair kv : doc.as<JsonObject>()) {
-                  std::string key = kv.key().c_str();
-                  std::string value = kv.value().as<std::string>();
-                  id(climate_translations)[key] = value;
+                for (auto kv : doc.as<JsonObject>()) {
+                  id(climate_translations)[kv.key().c_str()] = kv.value().as<std::string>();
                 }
               }
             }
+
 
   - platform: homeassistant
     id: translations_weather
@@ -130,21 +121,35 @@ text_sensor:
       then:
         - lambda: |-
             if (x.length() > 0) {
-              
-              DynamicJsonDocument doc(2048);
+              JsonDocument doc;
               DeserializationError error = deserializeJson(doc, x);
-              
+
               if (!error) {
                 id(weather_translations).clear();
-                
-                for (JsonPair kv : doc.as<JsonObject>()) {
-                  std::string key = kv.key().c_str();
-                  std::string value = kv.value().as<std::string>();
-                  id(weather_translations)[key] = value;
+                for (auto kv : doc.as<JsonObject>()) {
+                  id(weather_translations)[kv.key().c_str()] = kv.value().as<std::string>();
                 }
               }
             }
 
+  - platform: homeassistant
+    id: translations_alarm_panel
+    entity_id: sensor.display_tools
+    attribute: alarm_control_panel
+    on_value:
+      then:
+        - lambda: |-
+            if (x.length() > 0) {
+              JsonDocument doc;
+              DeserializationError error = deserializeJson(doc, x);
+
+              if (!error) {
+                id(alarm_panel_translations).clear();
+                for (auto kv : doc.as<JsonObject>()) {
+                  id(alarm_panel_translations)[kv.key().c_str()] = kv.value().as<std::string>();
+                }
+              }
+            }
 
 script:
   - id: get_translation
@@ -175,6 +180,11 @@ script:
           } else if (component == "weather") {
             auto it = id(weather_translations).find(key);
             if (it != id(weather_translations).end()) {
+              result = it->second;
+            }
+          } else if (component == "alarm_panel") {
+            auto it = id(alarm_panel_translations).find(key);
+            if (it != id(alarm_panel_translations).end()) {
               result = it->second;
             }
           }
@@ -237,6 +247,7 @@ lvgl:
                     - Português       # pt
                     - Русский         # ru
                     - English (US)    # en
+                    - Polski          # pl
 
                   bg_opa: TRANSP
                   shadow_opa: TRANSP
@@ -253,7 +264,7 @@ lvgl:
                     text_color: color_misty_blue
                     text_line_space: 7
                     pad_all: 8
-                    max_height: 360
+                    max_height: 300
                     selected:
                       checked:
                         bg_color: color_steel_blue
@@ -308,7 +319,18 @@ lvgl:
                             "component.weather.entity_component._.state.snowy-rainy",
                             "component.weather.entity_component._.state.sunny",
                             "component.weather.entity_component._.state.windy",
-                            "component.weather.entity_component._.state.windy-variant"
+                            "component.weather.entity_component._.state.windy-variant",
+                            "component.alarm_control_panel.entity_component._.state.armed",
+                            "component.alarm_control_panel.entity_component._.state.armed_away",
+                            "component.alarm_control_panel.entity_component._.state.armed_custom_bypass",
+                            "component.alarm_control_panel.entity_component._.state.armed_home",
+                            "component.alarm_control_panel.entity_component._.state.armed_night",
+                            "component.alarm_control_panel.entity_component._.state.armed_vacation",
+                            "component.alarm_control_panel.entity_component._.state.arming",
+                            "component.alarm_control_panel.entity_component._.state.disarmed",
+                            "component.alarm_control_panel.entity_component._.state.disarming",
+                            "component.alarm_control_panel.entity_component._.state.pending",
+                            "component.alarm_control_panel.entity_component._.state.triggered"
                           ]'
 
         # backlight:
@@ -459,6 +481,7 @@ mapping:
       5: flags_pt_img
       6: flags_ru_img
       7: flags_us_img
+      8: flags_pl_img
 
   - id: flag_icon_mapping_name
     from: int
@@ -472,6 +495,7 @@ mapping:
       5: pt
       6: ru
       7: en
+      8: pl
 
   - id: flag_icon_mapping_index
     from: string
@@ -485,6 +509,7 @@ mapping:
       pt: 5
       ru: 6
       en: 7
+      pl: 8
 
 
 esphome:
@@ -531,7 +556,18 @@ esphome:
                 "component.weather.entity_component._.state.snowy-rainy",
                 "component.weather.entity_component._.state.sunny",
                 "component.weather.entity_component._.state.windy",
-                "component.weather.entity_component._.state.windy-variant"
+                "component.weather.entity_component._.state.windy-variant",
+                "component.alarm_control_panel.entity_component._.state.armed",
+                "component.alarm_control_panel.entity_component._.state.armed_away",
+                "component.alarm_control_panel.entity_component._.state.armed_custom_bypass",
+                "component.alarm_control_panel.entity_component._.state.armed_home",
+                "component.alarm_control_panel.entity_component._.state.armed_night",
+                "component.alarm_control_panel.entity_component._.state.armed_vacation",
+                "component.alarm_control_panel.entity_component._.state.arming",
+                "component.alarm_control_panel.entity_component._.state.disarmed",
+                "component.alarm_control_panel.entity_component._.state.disarming",
+                "component.alarm_control_panel.entity_component._.state.pending",
+                "component.alarm_control_panel.entity_component._.state.triggered"
               ]'
 
         - lvgl.dropdown.update:

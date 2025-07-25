@@ -42,9 +42,9 @@ sensor:
             id: wifi_status
             text_color: !lambda |-
               if (id(wifi_signal_percent).state > 0) {
-              return lv_color_hex(0x39d19c);
+              return lv_color_hex(0x5CA848);
               }
-              return lv_color_hex(0x343645);
+              return lv_color_hex(0x5CA848);
             text: !lambda |-
               if (id(wifi_signal_percent).state > 0 && id(wifi_signal_percent).state < 26) {
               return "${wifi_25_icon}";
@@ -204,6 +204,14 @@ lvgl:
                   text_color: color_steel_blue
                   text_font: icons_24
 
+              # Alarm panel status
+              - label:
+                  id: alarm_panel_status
+                  align: RIGHT_MID
+                  x: -220
+                  text: "${shield_arming_icon}"
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_24
 
         # time
         - obj:
@@ -400,20 +408,20 @@ lvgl:
                   border_width: 0
                   shadow_opa: TRANSP
                   widgets:
-                      - label:
-                          id: temperature_sensor_icon
-                          align: LEFT_MID
-                          x: 20
-                          text: "${temperature_icon}"
-                          text_color: color_green
-                          text_font: icons_28
-                      - label:
-                          id: temperature_sensor_label
-                          align: LEFT_MID
-                          x: 55
-                          text: " "
-                          text_color: color_misty_blue
-                          text_font: nunito_16
+                    - label:
+                        id: temperature_sensor_icon
+                        align: LEFT_MID
+                        x: 20
+                        text: "${temperature_icon}"
+                        text_color: color_green
+                        text_font: icons_28
+                    - label:
+                        id: temperature_sensor_label
+                        align: LEFT_MID
+                        x: 55
+                        text: " "
+                        text_color: color_misty_blue
+                        text_font: nunito_16
 
               # humidity
               - obj:
@@ -427,20 +435,20 @@ lvgl:
                   border_width: 0
                   shadow_opa: TRANSP
                   widgets:
-                      - label:
-                          id: humidity_sensor_icon
-                          align: LEFT_MID
-                          x: 20
-                          text: "${humidity_icon}"
-                          text_color: color_blue
-                          text_font: icons_28
-                      - label:
-                          id: humidity_sensor_label
-                          align: LEFT_MID
-                          x: 55
-                          text: " "
-                          text_color: color_misty_blue
-                          text_font: nunito_16
+                    - label:
+                        id: humidity_sensor_icon
+                        align: LEFT_MID
+                        x: 20
+                        text: "${humidity_icon}"
+                        text_color: color_blue
+                        text_font: icons_28
+                    - label:
+                        id: humidity_sensor_label
+                        align: LEFT_MID
+                        x: 55
+                        text: " "
+                        text_color: color_misty_blue
+                        text_font: nunito_16
 
               # co2
               - obj:
@@ -454,20 +462,20 @@ lvgl:
                   border_width: 0
                   shadow_opa: TRANSP
                   widgets:
-                      - label:
-                          id: co2_sensor_icon
-                          align: LEFT_MID
-                          x: 20
-                          text: "${co2_icon}"
-                          text_color: color_yellow
-                          text_font: icons_28
-                      - label:
-                          id: co2_sensor_label
-                          align: LEFT_MID
-                          x: 55
-                          text: " "
-                          text_color: color_misty_blue
-                          text_font: nunito_16
+                    - label:
+                        id: co2_sensor_icon
+                        align: LEFT_MID
+                        x: 20
+                        text: "${co2_icon}"
+                        text_color: color_yellow
+                        text_font: icons_28
+                    - label:
+                        id: co2_sensor_label
+                        align: LEFT_MID
+                        x: 55
+                        text: " "
+                        text_color: color_misty_blue
+                        text_font: nunito_16
 
         # display lock
         - obj:

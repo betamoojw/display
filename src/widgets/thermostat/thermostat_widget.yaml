@@ -8,7 +8,8 @@ substitutions:
 
   heating_icon:       "\U0000e936"
   temperature_icon:   "\U0000e939"
-
+  pm_home_icon:       "\U000F0826"
+  pm_away_icon:       "\U000F1A46"
 
 climate:
   - platform: thermostat
@@ -173,6 +174,33 @@ text_sensor:
           id: thermostat_name_label
           text: !lambda return x;
 
+  # Thermostat preset mode
+  - platform: homeassistant
+    id: thermostat_sensor_preset_mode
+    entity_id: "${thermostat_entity}"
+    attribute: preset_mode
+    on_value:
+      - if:
+          condition:
+            lambda: 'return id(thermostat_sensor_preset_mode).state == "home";'
+          then:
+            - lvgl.obj.update:
+                id: thermostat_preset_mode_bg
+                bg_color: color_green
+            - lvgl.label.update:
+                id: thermostat_preset_mode_icon
+                text: "${pm_home_icon}"
+                text_color: color_green
+          else:
+            - lvgl.obj.update:
+                id: thermostat_preset_mode_bg
+                bg_color: color_red
+            - lvgl.label.update:
+                id: thermostat_preset_mode_icon
+                text: "${pm_away_icon}"
+                text_color: color_red
+
+
   # Thermostat hvac mode
   - platform: homeassistant
     id: thermostat_sensor_hvac_mode
@@ -183,6 +211,28 @@ text_sensor:
           id: thermostat_get_and_set_translated_state
           state_str: !lambda 'return id(thermostat_sensor_hvac_mode).state;'
 
+  # Thermostat state
+  - platform: homeassistant
+    id: thermostat_sensor_state
+    entity_id: "${thermostat_entity}"
+    on_value:
+      - if:
+          condition:
+            lambda: 'return id(thermostat_sensor_state).state == "off";'
+          then:
+            - lvgl.obj.update:
+                id: thermostat_power_bg
+                bg_color: color_misty_blue
+            - lvgl.label.update:
+                id: thermostat_power_icon
+                text_color: color_misty_blue
+          else:
+            - lvgl.obj.update:
+                id: thermostat_power_bg
+                bg_color: color_deep_orange
+            - lvgl.label.update:
+                id: thermostat_power_icon
+                text_color: color_deep_orange
 lvgl:
 
   gradients:
@@ -238,12 +288,12 @@ lvgl:
                   text_color: color_misty_blue
                   text: " "
 
-        # Controls
+        # Preset Mode and Power Toggle 
         - obj:
             id: thermostat_controls
-            x: 20
+            x: 100
             y: 100
-            width: 360
+            width: 260
             height: 280
             align: TOP_LEFT
             pad_all: 0
@@ -254,26 +304,99 @@ lvgl:
             shadow_opa: TRANSP
             radius: 10
             widgets:
-
-              - button:
-                  x: 20
+              - obj:
+                  id: thermostat_preset_mode_bg
+                  x: 35
                   y: -60
-                  width: 80
-                  height: 80
-                  bg_opa: TRANSP
-                  border_color: color_misty_blue
-                  border_width: 5
-                  border_opa: 80%
-                  shadow_opa: TRANSP
-                  radius: 40
-                  align: LEFT_MID
+                  align: left_mid
+                  width: 70
+                  height: 70
+                  radius: 35
+                  pad_all: 0
+                  bg_color: color_green
+                  bg_opa: 60%
+                  shadow_opa: transp
+                  border_opa: transp
+                  border_width: 0
                   widgets:
                     - label:
-                        y: -2
-                        align: CENTER
-                        text_font: nunito_64
-                        text_color: color_steel_blue
-                        text: "+"
+                        id: thermostat_preset_mode_icon
+                        align: center
+                        text_font: mdi_icons_52
+                        text_color: color_green
+                        text: "${pm_home_icon}"
+                  on_click:
+                    - if:
+                        condition:
+                          lambda: 'return id(thermostat_sensor_preset_mode).state == "home";'
+                        then:
+                          - homeassistant.action:
+                              action: climate.set_preset_mode
+                              data:
+                                entity_id: "${thermostat_entity}"
+                                preset_mode: away
+                        else:
+                          - homeassistant.action:
+                              action: climate.set_preset_mode
+                              data:
+                                entity_id: "${thermostat_entity}"
+                                preset_mode: home
+
+              - obj:
+                  id: thermostat_power_bg
+                  x: 35
+                  y: 60
+                  align: left_mid
+                  width: 70
+                  height: 70
+                  radius: 35
+                  pad_all: 0
+                  bg_color: color_deep_orange
+                  bg_opa: 30%
+                  shadow_opa: transp
+                  border_opa: transp
+                  border_width: 0
+                  widgets:
+                    - label:
+                        id: thermostat_power_icon
+                        align: center
+                        text_font: icons_38
+                        text_color: color_deep_orange
+                        text: "${power_icon}"
+                  on_click:
+                    - homeassistant.action:
+                        action: climate.toggle
+                        data:
+                          entity_id: "${thermostat_entity}"
+
+        # Temperature controls
+        - obj:
+            x: 5
+            y: -60
+            width: 90
+            height: 90
+            align: left_mid
+            pad_all: 0
+            bg_opa: transp
+            shadow_opa: transp
+            border_opa: transp
+            widgets:
+              - obj:
+                  width: 70
+                  height: 70
+                  align: center
+                  clickable: true
+                  radius: 50
+                  pad_all: 0
+                  bg_opa: transp
+                  border_opa: transp
+                  border_width: 0
+                  shadow_width: 8
+                  shadow_spread: 2
+                  shadow_color: color_black
+                  pressed:
+                    bg_color: 0x3A3A4C
+                    shadow_width: 5
                   on_press:
                       then:
                         - lambda: |-
@@ -284,25 +407,65 @@ lvgl:
                             data:
                               entity_id: "${thermostat_entity}"
                               temperature: !lambda 'return id(thermostat_sensor_target_temp).state;'
-              - button:
-                  x: 20
-                  y: 60
-                  width: 80
-                  height: 80
-                  bg_opa: TRANSP
-                  border_color: color_misty_blue
-                  border_width: 5
-                  border_opa: 80%
-                  shadow_opa: TRANSP
-                  radius: 40
-                  align: LEFT_MID
+              - obj:
+                  width: 60
+                  height: 60
+                  align: center
+                  clickable: false
+                  radius: 45
+                  pad_all: 0
+                  bg_opa: transp 
+                  border_opa: transp
+                  shadow_width: 4
+                  shadow_color: 0xFFFFFF
+                  shadow_ofs_x: -4
+                  shadow_ofs_y: -2
+                  shadow_opa: 30%
+
+              - obj:
+                  width: 65
+                  height: 65
+                  pad_all: 0
+                  align: center
+                  clickable: false
+                  radius: 50
+                  border_opa: transp
+                  bg_color: color_slate_blue_gray
                   widgets:
                     - label:
                         y: -2
-                        align: CENTER
-                        text_font: nunito_64
-                        text_color: color_steel_blue
-                        text: "-"
+                        align: center
+                        text_font: nunito_48
+                        text_color: color_misty_blue
+                        text: "+"
+
+        - obj:
+            x: 5
+            y: 60
+            width: 90
+            height: 90
+            align: left_mid
+            pad_all: 0
+            bg_opa: transp
+            shadow_opa: transp
+            border_opa: transp
+            widgets:
+              - obj:
+                  width: 70
+                  height: 70
+                  align: center
+                  clickable: true
+                  radius: 50
+                  pad_all: 0
+                  bg_opa: transp
+                  border_opa: transp
+                  border_width: 0
+                  shadow_width: 8
+                  shadow_spread: 2
+                  shadow_color: color_black
+                  pressed:
+                    bg_color: 0x3A3A4C
+                    shadow_width: 5
                   on_press:
                       then:
                         - lambda: |-
@@ -313,6 +476,38 @@ lvgl:
                             data:
                               entity_id: "${thermostat_entity}"
                               temperature: !lambda 'return id(thermostat_sensor_target_temp).state;'
+              - obj:
+                  width: 60
+                  height: 60
+                  align: center
+                  clickable: false
+                  radius: 45
+                  pad_all: 0
+                  bg_opa: transp 
+                  border_opa: transp
+                  shadow_width: 4
+                  shadow_color: 0xFFFFFF
+                  shadow_ofs_x: -4
+                  shadow_ofs_y: -2
+                  shadow_opa: 30%
+
+              - obj:
+                  width: 65
+                  height: 65
+                  pad_all: 0
+                  align: center
+                  clickable: false
+                  radius: 50
+                  border_opa: transp
+                  bg_color: color_slate_blue_gray
+                  widgets:
+                    - label:
+                        y: -2
+                        align: CENTER
+                        text_font: nunito_48
+                        text_color: color_misty_blue
+                        text: "-"
+
 
         # Name
         - obj:

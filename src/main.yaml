@@ -34,10 +34,11 @@ esp32:
     type: esp-idf
     sdkconfig_options:
       CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: "y"
-      CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
-      CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
-      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
-      CONFIG_SPIRAM_RODATA: y
+      CONFIG_SPIRAM_TRY_ALLOCATE_WIFI_LWIP: y
+      # CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
+      # CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
+      # CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      # CONFIG_SPIRAM_RODATA: y
 
 psram:
   mode: octal
@@ -45,7 +46,7 @@ psram:
 
 
 logger:
-  level: INFO
+  level: debug
 
 
 api:
@@ -89,11 +90,12 @@ output:
     id: GPIO38
     frequency: 100Hz
 
-
 i2c:
   - id: bus_a
     sda: GPIO19
-    scl: GPIO45
+    scl:
+      number: GPIO45
+      ignore_strapping_warning: true
     frequency: 100kHz
 
 

@@ -12,6 +12,7 @@ packages:
   shutter: !include shutter/shutter_config.yaml
   thermostat: !include thermostat/thermostat_widget.yaml
   air_conditioner: !include air_conditioner/air_conditioner_widget.yaml
+  alarm_panel: !include alarm_panel/alarm_panel.yaml
 
 
 lvgl:
@@ -36,7 +37,7 @@ lvgl:
               - obj:
                   y: 10
                   width: 440
-                  height: 100
+                  height: 150
                   pad_all: 0
                   align: TOP_MID
                   bg_opa: TRANSP
@@ -114,7 +115,7 @@ lvgl:
               - obj:
                   y: 120
                   width: 440
-                  height: 100
+                  height: 150
                   pad_all: 0
                   align: TOP_MID
                   bg_opa: TRANSP
@@ -169,5 +170,25 @@ lvgl:
                               time: 300ms
 
 
-
+                    - button:
+                        id: alarm_panel_page_btn
+                        x: 305
+                        align: LEFT_MID
+                        width: 100
+                        height: 100
+                        radius: 10
+                        bg_color: color_slate_blue_gray
+                        shadow_opa: TRANSP
+                        widgets:
+                          - label:
+                              align: CENTER
+                              text_color: color_steel_blue
+                              text_font: mdi_icons_72
+                              text: "${shield_away_icon}"
+                        on_press:
+                          - lvgl.widget.hide: menu_controls_main
+                          - lvgl.page.show: 
+                              id: alarm_panel_page
+                              animation: OUT_RIGHT
+                              time: 300ms
   

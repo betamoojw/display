@@ -130,6 +130,9 @@
   size: 32
   bpp: 4
   glyphs: [
+    "\U0000e91f", # arrow_up
+    "\U0000e920", # arrow_down
+    "\U0000e91c", # stop
     "\U0000e90e", # volume_off
     "\U0000e90f", # volume_on
     "\U0000e910", # volume_minus
@@ -242,4 +245,66 @@
     "\U0000e944", # 80 - shutter
     "\U0000e942", # 90 - shutter
     "\U0000e91e"  # 100 - shutter_open
+  ]
+
+- file: "fonts/materialdesignicons-webfont.ttf"
+  id: mdi_icons_24
+  size: 24
+  bpp: 4
+  glyphs: [
+    "\U000F068A", # shield home
+    "\U000F1828", # shield moon
+    "\U000F099D", # shield lock
+    "\U000F06BB", # shield plane
+    "\U000F099E", # shield off
+    "\U000F0498", # shield
+  ]
+
+- file: "fonts/materialdesignicons-webfont.ttf"
+  id: mdi_icons_40
+  size: 40
+  bpp: 4
+  glyphs: [
+    "\U000F068A", # shield home
+    "\U000F1828", # shield moon
+    "\U000F099D", # shield lock
+    "\U000F06BB", # shield plane
+    "\U000F099E", # shield off
+    "\U000F0498", # shield
+  ]
+
+- file: "fonts/materialdesignicons-webfont.ttf"
+  id: mdi_icons_52
+  size: 52
+  bpp: 4
+  glyphs: [
+    "\U000F068A", # shield home
+    "\U000F1828", # shield moon
+    "\U000F099D", # shield lock
+    "\U000F06BB", # shield plane
+    "\U000F099E", # shield off
+    "\U000F0498", # shield
+    "\U000F0826", # home
+    "\U000F1A46", # away
+  ]
+
+- file: "fonts/materialdesignicons-webfont.ttf"
+  id: mdi_icons_68
+  size: 68
+  bpp: 4
+  glyphs: [
+    "\U000F068A", # shield home
+    "\U000F1828", # shield moon
+    "\U000F099D", # shield lock
+    "\U000F06BB", # shield plane
+    "\U000F099E", # shield off
+    "\U000F0498", # shield
+  ]
+
+- file: "fonts/materialdesignicons-webfont.ttf"
+  id: mdi_icons_72
+  size: 72
+  bpp: 4
+  glyphs: [
+    "\U000F099D", # shield lock
   ]

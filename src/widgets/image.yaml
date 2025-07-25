@@ -292,6 +292,11 @@
   resize: 60x80
   transparency: alpha_channel
 
+- file: 'img/flags/pl.png'
+  id: flags_pl_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
 
   #############################
   ########## BATTERY ##########
@@ -351,3 +356,4 @@
   id: battery_0_img
   type: rgb565
   transparency: alpha_channel
+
