@@ -1,11 +1,5 @@
 # LVGL ESPhome Guition ESP32-S3-4848S040 custom firmware
 
-> [!NOTE]
->
-> ❤️ **GOOD NEWS**
->
-> You can use any ESPHome version, including 2025.6+. See the [instructions](#-installation) below for details.
-
 <p align="center">
  <img width="200px" src="/doc/img/screen1.png">
  <img width="200px" src="/doc/img/screen2.png">
@@ -29,7 +23,7 @@
 
 ## ✨ Features
 
-- Status indicators for Wi-Fi, Home Assistant, thermostat, air conditioner, touchscreen lock
+- Status indicators for Wi-Fi, Home Assistant, thermostat, air conditioner, touchscreen lock, alarm panel
 - Weather icons with current conditions and temperature
 - Date and time
 - Sensor readings from Home Assistant
@@ -39,23 +33,15 @@
 - Shutter control
 - Media player control
 - Control of lights
+- Alarm panel
 - Settings:
   * Backlight adjustment
   * Screen timeout settings
-  * Language selection for states
+  * Language selection for states (ru, en, pl, pt, fr, es, de, it, us)
 
 ## 📦 Installation
 > [!WARNING]
-> All widgets are fully supported only on ESPHome firmware version **2025.5.2**.  
->  
-> It is possible to run this project on the latest ESPHome version, but you will need to comment out one of the widgets and button in devices.yaml (it has been tested to work without the shutter or media player widgets).  
->  
-> Unfortunately, ESPHome versions **2025.6 and newer** cannot handle this number of widgets on this device.
-
-
-<img width="600px" src="/doc/img/screen13.png">
-<img width="200px" src="/doc/img/screen14.png">
-
+> All versions ESPHome firmware now available!!! (Big thanks [сlydebarrow](https://github.com/clydebarrow) ).
 
 > 📹 **Video [instruction](https://youtu.be/HYN_2hvcbes?si=JfYQH4vCuFlr8Q9r)**
 
@@ -68,7 +54,6 @@
 ## 🐛 Known Issues
 - The weather status text does not change depending on day/night, only the picture
 - When the connection with the API is lost/reboot, the screen lock state is not restored
-- When initially loading/flashing, it may go into reboot (I have not yet found the cause of the problem)
 
 ## ⚠️ Important Notice
 - Regarding shutter and vacuum widgets: Testing was conducted on demo entities (as I don't have real devices), so errors may occur when working with real entities. Feedback is welcome! 🙏
