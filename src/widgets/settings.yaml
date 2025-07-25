@@ -264,7 +264,7 @@ lvgl:
                     text_color: color_misty_blue
                     text_line_space: 7
                     pad_all: 8
-                    max_height: 300
+                    max_height: 280
                     selected:
                       checked:
                         bg_color: color_steel_blue
