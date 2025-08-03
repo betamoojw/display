@@ -1,5 +1,7 @@
 # LVGL ESPhome Guition ESP32-S3-4848S040 custom firmware
 
+Update: 27.07.2025. Add new languages
+
 <p align="center">
  <img width="200px" src="/doc/img/screen1.png">
  <img width="200px" src="/doc/img/screen2.png">
@@ -37,7 +39,7 @@
 - Settings:
   * Backlight adjustment
   * Screen timeout settings
-  * Language selection for states (ru, en, pl, pt, fr, es, de, it, us)
+  * Language selection for states (ru, en, pl, pt, fr, es, de, it, us, tr, sv, vi, id, ro, nl, hu, cs, fi)
 
 ## 📦 Installation
 > [!WARNING]

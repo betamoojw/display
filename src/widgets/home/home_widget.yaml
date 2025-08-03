@@ -20,6 +20,7 @@ substitutions:
   tvoc:                    "\U0000e93a" # air quality
   temperature_icon:        "\U0000e939" 
   illumination:            "\U0000e92f" # lux
+  lightbulb_icon:          "\U0000e908"
 
 globals:
   - id: display_lock
@@ -482,7 +483,7 @@ lvgl:
             id: home_bg_display_lock
             x: 260
             y: 300
-            width: 90
+            width: 60
             height: 60
             align: TOP_LEFT
             pad_all: 0
@@ -509,12 +510,39 @@ lvgl:
                     else:
                       - switch.turn_off: display_lock_switch
 
+        # display backlight off
+        - obj:
+            id: home_bg_display_backlight_off
+            x: 330
+            y: 300
+            width: 60
+            height: 60
+            align: TOP_LEFT
+            pad_all: 0
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            border_opa: TRANSP
+            border_width: 0
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: display_backlight_off_btn
+                  align: CENTER
+                  text_font: icons_36
+                  text_color: color_misty_blue
+                  text: "${lightbulb_icon}"
+            on_click:
+              - delay: 1s
+              - light.turn_off: display_backlight
+              - lvgl.pause:
+
         # display info
         - obj:
             id: home_bg_display_info
-            x: 370
+            x: 400
             y: 300
-            width: 90
+            width: 60
             height: 60
             align: TOP_LEFT
             pad_all: 0

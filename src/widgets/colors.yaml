@@ -24,10 +24,14 @@
   hex: 4C9FFF
 - id: color_yellow
   hex: e7c12c
+- id: color_light_yellow
+  hex: f0d45c
 - id: color_amber
   hex: f4a900
 - id: color_mint
   hex: 39d19c
+- id: color_light_mint
+  hex: 66dcb3
 - id: color_light_green
   hex: 00ff00
 - id: color_green

@@ -298,6 +298,60 @@
   resize: 60x80
   transparency: alpha_channel
 
+- file: 'img/flags/tr.png'
+  id: flags_tr_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/sv.png'
+  id: flags_sv_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/id.png'
+  id: flags_id_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/vi.png'
+  id: flags_vi_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/ro.png'
+  id: flags_ro_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/nl.png'
+  id: flags_nl_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/hu.png'
+  id: flags_hu_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/cs.png'
+  id: flags_cs_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
+- file: 'img/flags/fi.png'
+  id: flags_fi_img
+  type: rgb565
+  resize: 60x80
+  transparency: alpha_channel
+
   #############################
   ########## BATTERY ##########
   #############################
