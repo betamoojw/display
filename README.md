@@ -1,7 +1,5 @@
 # LVGL ESPhome Guition ESP32-S3-4848S040 custom firmware
 
-Update: 27.07.2025. Add new languages
-
 <p align="center">
  <img width="200px" src="/doc/img/screen1.png">
  <img width="200px" src="/doc/img/screen2.png">
