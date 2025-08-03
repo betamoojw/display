@@ -24,6 +24,8 @@ body:
       options:
         - label: I have checked that the problem is not related to incorrect entity configuration in Home Assistant
           required: true
+        - label: I have checked that the problem is not related to incorrect entity configuration in ESPHome
+          required: true
         - label: I have confirmed this is actually a bug, not a question (use Discussions for questions)
           required: true
 
