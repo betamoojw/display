@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Discussions and Suggestions
+  - name: 💬 Questions & Discussions
     url: https://github.com/alaltitov/Guition-ESP32-S3-4848S040/discussions
-    about: Use Discussions for questions, suggestions, and general discussions
+    about: For questions, suggestions, and general discussions
+  - name: 💡 Feature Requests
+    url: https://github.com/alaltitov/Guition-ESP32-S3-4848S040/discussions/categories/ideas
+    about: Suggest new features or improvements
