@@ -1,4 +1,3 @@
-
 globals:
   - id: ha_connected
     type: bool

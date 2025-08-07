@@ -59,8 +59,8 @@
 - Regarding shutter and vacuum widgets: Testing was conducted on demo entities (as I don't have real devices), so errors may occur when working with real entities. Feedback is welcome! 🙏
 
 ## 📖 Documentation
-
-- https://esphome.io/components/lvgl/
+- [Firmware](https://alaltitov.github.io/Guition-ESP32-S3-4848S040-DOCS)
+- [ESPHome LVGL 8.4](https://esphome.io/components/lvgl/)
 
 ## 🤝 Thanks for your help
 
