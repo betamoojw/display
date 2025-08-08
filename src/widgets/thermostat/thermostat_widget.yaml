@@ -2,9 +2,9 @@
 
 substitutions:
 
-  thermostat_name:    "thermostat"
-  temperature_sensor: "temperature_sensor"
-  thermostat_entity:  "climate.display_thermostat"
+  thermostat_name:                "thermostat"
+  thermostat_temperature_entity: "sensor.outside_temperature"
+  thermostat_entity:              "climate.display_thermostat"
 
   heating_icon:       "\U0000e936"
   temperature_icon:   "\U0000e939"
@@ -15,7 +15,7 @@ climate:
   - platform: thermostat
     name: "${thermostat_name}"
     id: climate_thermostat
-    sensor: "${temperature_sensor}" # id temperature_sensor from HA
+    sensor: thermostate_temperature_sensor
     on_boot_restore_from: memory
     min_heating_off_time: 5s
     min_heating_run_time: 5s
@@ -115,6 +115,11 @@ switch:
 
 
 sensor:
+
+  # Thermostat temperature sensor
+  - platform: homeassistant
+    id: thermostate_temperature_sensor
+    entity_id: "${thermostat_temperature_entity}"
 
   # Thermostat target temperature
   - platform: homeassistant
